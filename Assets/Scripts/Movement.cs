@@ -12,7 +12,6 @@ public class Movement : MonoBehaviour
 
     [SerializeField] private Vector3 offset = new Vector3(0, 7, -10);
 
-    private float rotationInput;
 
     private float horizontalInput;
     private float verticalInput;
@@ -24,7 +23,6 @@ public class Movement : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
 
-        rotationInput = Input.GetAxis("Rotation");
 
 
         transform.Translate(Vector3.forward * speed *  Time.deltaTime * verticalInput);
