@@ -9,10 +9,11 @@ public class Movement : MonoBehaviour
 
     [SerializeField] private float speed = 10f;
     [SerializeField] private float lateralSpeed = 5f;
+    
 
     [SerializeField] private Vector3 offset = new Vector3(0, 7, -10);
 
-    private float rotationInput;
+  
 
     private float horizontalInput;
     private float verticalInput;
@@ -24,16 +25,23 @@ public class Movement : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
 
-        rotationInput = Input.GetAxis("Rotation");
-
+        
+        transform.Rotate(Vector3.up, lateralSpeed * Time.deltaTime * horizontalInput);
 
         transform.Translate(Vector3.forward * speed *  Time.deltaTime * verticalInput);
 
-        transform.Translate(Vector3.right * lateralSpeed * Time.deltaTime * horizontalInput);
+        // transform.Translate(Vector3.right * lateralSpeed * Time.deltaTime * horizontalInput);
 
         
 
-        camera.transform.position = transform.position + offset;
+        
 
+        
+
+    }
+
+    private void LateUpdate()
+    {
+        camera.transform.position = transform.position + offset;
     }
 }
